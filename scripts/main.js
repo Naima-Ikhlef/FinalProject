@@ -38,14 +38,25 @@ function AppelAPI(long, lat){
 
         // les heures, par tranche de 3, avec leur température
 
-        let heureActuelle = new Date().getHours();
+        let heureActuelle = new Date().getUTCHours();
 
         for(let i = 0; i < heure.length; i++) {
 
             let heureIncr = heureActuelle + i * 3;
 
-            heure[i].innerText = `${heureIncr} h`;
+            if(heureIncr > 24) {
+                heure[i].innerText = `${heureIncr - 24}`;
+            } else if(heureIncr == 24) {
+                heure[i].innerText = "00 h";
+            } else {
+                heure[i].innerText = `${heureIncr} h`;
+            }
 
+        }
+
+        // temp pour 3h 
+        for(let j = 0; j < tempPourH.length; j++) {
+            tempPourH[j].innerText = `${resultatsAPI.hourly[j * 3].main.temp}°`
         }
     })
 
