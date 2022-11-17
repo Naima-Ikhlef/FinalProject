@@ -4,7 +4,7 @@ let resultatsAPI;
 const temps = document.querySelector('.temps');
 const temperature = document.querySelector('.temperature');
 const localisation = document.querySelector('.localisation');
-const heure = document.querySelector('.heure-nom-prevision');
+const heure = document.querySelectorAll('.heure-nom-prevision');
 const tempPourH = document.querySelectorAll('.heure-prevision-valeur');
 
 if(navigator.geolocation){
