@@ -4,8 +4,8 @@ let resultatsAPI;
 const temps = document.querySelector('.temps');
 const temperature = document.querySelector('.temperature');
 const localisation = document.querySelector('.localisation');
-const heure = document.querySelector('.heure-nom-prevision');
-const tempPourH = document.querySelector('.heure-prevision-valeur');
+const heure = document.querySelectorAll('.heure-nom-prevision');
+const tempPourH = document.querySelectorAll('.heure-prevision-valeur');
 
 if(navigator.geolocation){
     navigator.geolocation.getCurrentPosition(position => {
@@ -14,7 +14,6 @@ if(navigator.geolocation){
         let long = position.coords.longitude;
         let lat = position.coords.latitude;
         AppelAPI(long,lat);
-
     }, () => {
         alert(`Vous avez refusez la géolocalisation, l'application ne peut pas 
         fonctionner, veuillez l'activer !`)
@@ -38,25 +37,18 @@ function AppelAPI(long, lat){
 
         // les heures, par tranche de 3, avec leur température
 
-        let heureActuelle = new Date().getUTCHours();
+        let heureActuelle = new Date().getHours();
 
-        for(let i = 0; i < heure.length; i++) {
-
+        for(let i = 0; i < heure.length; i++){
             let heureIncr = heureActuelle + i * 3;
 
-            if(heureIncr > 24) {
-                heure[i].innerText = `${heureIncr - 24}`;
-            } else if(heureIncr == 24) {
-                heure[i].innerText = "00 h";
-            } else {
-                heure[i].innerText = `${heureIncr} h`;
+            if(heureIncr > 24){
+                heure[i].innerText = `${heureIncr - 24}h`;
+            }else if(heureIncr === 24){
+                heure[i].innerText = "00h";
+            }else{
+                heure[i].innerText = `${heureIncr}h`;
             }
-
-        }
-
-        // temp pour 3h 
-        for(let j = 0; j < tempPourH.length; j++) {
-            tempPourH[j].innerText = `${resultatsAPI.hourly[j * 3].main.temp}°`
         }
     })
 
