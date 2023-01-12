@@ -4,8 +4,8 @@ let resultatsAPI;
 const temps = document.querySelector('.temps');
 const temperature = document.querySelector('.temperature');
 const localisation = document.querySelector('.localisation');
-const heure = document.querySelectorAll('.heure-nom-prevision');
-const tempPourH = document.querySelectorAll('.heure-prevision-valeur');
+const heure = document.querySelector('.heure-nom-prevision');
+const tempPourH = document.querySelector('.heure-prevision-valeur');
 
 if(navigator.geolocation){
     navigator.geolocation.getCurrentPosition(position => {
@@ -55,9 +55,9 @@ function AppelAPI(long, lat){
         }
 
         // temp pour 3h 
-        //for(let j = 0; j < tempPourH.length; j++) {
-          //  tempPourH[j].innerText = `${resultatsAPI.hourly[j * 3].main.temp}°`
-        //}
+        for(let j = 0; j < tempPourH.length; j++) {
+            tempPourH[j].innerText = `${resultatsAPI.hourly[j * 3].main.temp}°`
+        }
     })
 
 }
