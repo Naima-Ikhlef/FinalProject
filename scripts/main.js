@@ -27,7 +27,7 @@ function AppelAPI(long, lat){
         return reponse.json();
     })
     .then((data) => {
-       console.log(data);
+        console.log(data);
 
        resultatsAPI = data;
         temps.innerText = resultatsAPI.weather[0].description;
@@ -40,7 +40,7 @@ function AppelAPI(long, lat){
         let heureActuelle = new Date().getHours();
 
         for(let i = 0; i < heure.length; i++){
-            let heureIncr = heureActuelle + i * 3;
+            let heureIncr = heureActuelle + i;
 
             if(heureIncr > 24){
                 heure[i].innerText = `${heureIncr - 24}h`;
@@ -49,6 +49,12 @@ function AppelAPI(long, lat){
             }else{
                 heure[i].innerText = `${heureIncr}h`;
             }
+        }
+
+        // temp pour heure 
+        
+        for(let j = 0; j < tempPourH.length; j++){
+            tempPourH[j].innerText = `${Math.trunc(resultatsAPI.main.temp)}°`;
         }
     })
 
