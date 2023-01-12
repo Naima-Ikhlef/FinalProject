@@ -22,7 +22,7 @@ if(navigator.geolocation){
 
 function AppelAPI(long, lat){
 
-    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&exclude=minutely&units=metric&lang=fr&appid=${CLEAPI}`)
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}8&lon=${long}&exclude=daily,minutely,alerts&units=metric&lang=fr&appid=${CLEAPI}`)
     .then((reponse) => {
         return reponse.json();
     })
@@ -30,17 +30,17 @@ function AppelAPI(long, lat){
         console.log(data);
 
        resultatsAPI = data;
-        temps.innerText = resultatsAPI.weather[0].description;
-        temperature.innerText = `${Math.trunc(resultatsAPI.main.temp)}°`
-        localisation.innerText = resultatsAPI.name;
+        temps.innerText = resultatsAPI.current.weather[0].description;
+        temperature.innerText = `${Math.trunc(resultatsAPI.current.temp)}°`
+        localisation.innerText = resultatsAPI.timezone;
 
 
-        // les heures, par tranche de 3, avec leur température
+        // les heures, par tranche de 2, avec leur température
 
         let heureActuelle = new Date().getHours();
 
         for(let i = 0; i < heure.length; i++){
-            let heureIncr = heureActuelle + i;
+            let heureIncr = heureActuelle + i *2;
 
             if(heureIncr > 24){
                 heure[i].innerText = `${heureIncr - 24}h`;
@@ -54,7 +54,7 @@ function AppelAPI(long, lat){
         // temp pour heure 
         
         for(let j = 0; j < tempPourH.length; j++){
-            tempPourH[j].innerText = `${Math.trunc(resultatsAPI.main.temp)}°`;
+            tempPourH[j].innerText = `${Math.trunc(resultatsAPI.hourly[j *2].temp)}°`;
         }
     })
 
