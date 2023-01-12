@@ -55,9 +55,9 @@ function AppelAPI(long, lat){
         }
 
         // temp pour 3h 
-        for(let j = 0; j < tempPourH.length; j++) {
-            tempPourH[j].innerText = `${resultatsAPI.hourly[j * 3].main.temp}°`
-        }
+        //for(let j = 0; j < tempPourH.length; j++) {
+          //  tempPourH[j].innerText = `${resultatsAPI.hourly[j * 3].main.temp}°`
+        //}
     })
 
 }
