@@ -1,3 +1,5 @@
+import tabJoursOrdre from "./Utilitaire/gestionTemps.js";
+
 const CLEAPI = '0b65386df87af2fd106b7d6ff47345ef' ;
 let resultatsAPI;
 
@@ -6,6 +8,10 @@ const temperature = document.querySelector('.temperature');
 const localisation = document.querySelector('.localisation');
 const heure = document.querySelectorAll('.heure-nom-prevision');
 const tempPourH = document.querySelectorAll('.heure-prevision-valeur');
+const joursDiv = document.querySelectorAll('.jour-prevision-nom');
+const tempJourDiv = document.querySelectorAll('.jour-prevision-temperature');
+const imgIcone = document.querySelector('.logo-meteo');
+const chargementContainer = document.querySelector('.overlay-icone-chargement');
 
 if(navigator.geolocation){
     navigator.geolocation.getCurrentPosition(position => {
@@ -35,7 +41,7 @@ function AppelAPI(long, lat){
         localisation.innerText = resultatsAPI.timezone;
 
 
-        // les heures, par tranche de 2, avec leur température
+        // les heures, par tranche de 3, avec leur température
 
         let heureActuelle = new Date().getHours();
 
@@ -56,6 +62,29 @@ function AppelAPI(long, lat){
         for(let j = 0; j < tempPourH.length; j++){
             tempPourH[j].innerText = `${Math.trunc(resultatsAPI.hourly[j *2].temp)}°`;
         }
+
+        // trois première lettre des jours 
+
+        for(let k = 0; k < tabJoursOrdre.length; k++){
+            joursDiv[k].innerText = tabJoursOrdre[k].slice(0,3);
+        }
+
+        /* Temp par jour (Impossible car ma cleapi est une version gratuite donc la température par jour n'est pas disponible)
+
+        for(let m =0; m < 7; m++) {
+            tempJourDiv[m].innerText = `${Math.trunc(resultatsAPI.daily[m+1].temp.day)}°`
+        } */
+
+        // Icone dynamique 
+
+        if(heureActuelle >= 6 && heureActuelle < 21){
+            imgIcone.src = `ressources/jour/${resultatsAPI.current.weather[0].icon}.svg`
+        } else {
+            imgIcone.src = `ressources/nuit/${resultatsAPI.current.weather[0].icon}.svg`
+
+        }
+
+        chargementContainer.classList.add('disparition');
     })
 
 }
