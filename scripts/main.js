@@ -1,6 +1,6 @@
 import tabJoursOrdre from "./Utilitaire/gestionTemps.js";
 
-const CLEAPI = '0b65386df87af2fd106b7d6ff47345ef' ;
+const CLEAPI = '0b65386df87af2fd106b7d6ff47345ef';
 let resultatsAPI;
 
 const temps = document.querySelector('.temps');
@@ -65,8 +65,8 @@ function AppelAPI(long, lat){
 
         // trois première lettre des jours 
 
-        for(let k = 0; k < tabJoursOrdre.length; k++){
-            joursDiv[k].innerText = tabJoursOrdre[k].slice(0,3);
+        for(let k = 0; k < tabJoursOrdre.length; k++) {
+            joursDiv.innerText = tabJoursOrdre[k].slice(0,3);
         }
 
         /* Temp par jour (Impossible car ma cleapi est une version gratuite donc la température par jour n'est pas disponible)
