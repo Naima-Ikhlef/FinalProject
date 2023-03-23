@@ -1,6 +1,6 @@
 import tabJoursOrdre from "./Utilitaire/gestionTemps.js";
 
-const CLEAPI = '0b65386df87af2fd106b7d6ff47345ef';
+const CLEAPI = 'd9334e2ee916a145a97235c7efb3d4f8';
 let resultatsAPI;
 
 const temps = document.querySelector('.temps');
@@ -33,7 +33,7 @@ function AppelAPI(long, lat){
         return reponse.json();
     })
     .then((data) => {
-        console.log(data);
+       console.log(data);
 
        resultatsAPI = data;
         temps.innerText = resultatsAPI.current.weather[0].description;
@@ -83,8 +83,6 @@ function AppelAPI(long, lat){
             imgIcone.src = `ressources/nuit/${resultatsAPI.current.weather[0].icon}.svg`
 
         }
-
-        chargementContainer.classList.add('disparition');
     })
 
 }
