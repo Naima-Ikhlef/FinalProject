@@ -12,4 +12,4 @@ let tabJoursOrdre = joursSemaine.slice(joursSemaine.indexOf(jourActuel)).concat(
 
 //console.log(tabJoursOrdre)
 
-export default tabJoursOrdre;
+export default tabJoursOrdre ;
