@@ -38,7 +38,7 @@ function AppelAPI(long, lat){
        resultatsAPI = data;
         temps.innerText = resultatsAPI.current.weather[0].description;
         temperature.innerText = `${Math.trunc(resultatsAPI.current.temp)}°`
-        localisation.innerText = resultatsAPI.timezone;
+        //localisation.innerText = resultatsAPI.timezone;
 
 
         // les heures, par tranche de 3, avec leur température
@@ -83,6 +83,8 @@ function AppelAPI(long, lat){
             imgIcone.src = `ressources/nuit/${resultatsAPI.current.weather[0].icon}.svg`
 
         }
+
+        chargementContainer.classList.add('disparition');
     })
 
 }
