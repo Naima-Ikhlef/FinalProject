@@ -86,5 +86,4 @@ function AppelAPI(long, lat){
 
         chargementContainer.classList.add('disparition');
     })
-
 }
