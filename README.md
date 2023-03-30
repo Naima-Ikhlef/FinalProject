@@ -6,6 +6,7 @@ mais également pour me permettre de mettre en ligne mon site HTML ! 😃
 #### (Ce n'est pas la version finale)
 
 #### Mise à jour : 22-03-2023
+la version finale est en ligne !!!
 
 # Final year project (en)
 
@@ -15,3 +16,4 @@ but also to allow me to put my HTML site online! 😃
 #### This is not the final version
 
 #### Update : 03-2023-22
+Final version is online !!!
